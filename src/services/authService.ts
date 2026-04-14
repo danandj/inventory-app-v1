@@ -1,6 +1,6 @@
 import { LoginErrorResponse, LoginSuccessResponse, RegisterErrorResponse, RegisterSuccessResponse } from '../types/auth';
 
-const BASE_URL = 'http://192.168.83.42:3000'; //alamat API
+const BASE_URL = 'http://172.20.10.3:3000'; //Alamat IP Backend/Api nya
 
 export const login = async (
     username: string,

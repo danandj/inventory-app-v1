@@ -1,7 +1,7 @@
 import { Feather } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
-import { Alert, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Alert, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import useAuth from '../hooks/useAuth';
 
 export default function RegisterScreen() {
@@ -38,107 +38,112 @@ export default function RegisterScreen() {
     };
 
     return (
-        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-            <View style={styles.header}>
-                <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
-                    <Feather name="arrow-left" size={24} color="#2563EB" />
-                </TouchableOpacity>
-                <Text style={styles.headerTitle}>Buat Akun Baru</Text>
-                <View style={{ width: 24 }} />
-            </View>
-
-            <View style={styles.formContainer}>
-                <Text style={styles.label}>USERNAME</Text>
-                <View style={styles.inputContainer}>
-                    <Feather name="user" size={20} color="#9CA3AF" style={styles.inputIcon} />
-                    <TextInput
-                        style={styles.input}
-                        placeholder="Masukan username"
-                        placeholderTextColor="#9CA3AF"
-                        value={username}
-                        onChangeText={setUsername}
-                        autoCapitalize="none"
-                    />
-                </View>
-
-                <Text style={styles.label}>NAMA LENGKAP</Text>
-                <View style={styles.inputContainer}>
-                    <Feather name="target" size={20} color="#9CA3AF" style={styles.inputIcon} />
-                    <TextInput
-                        style={styles.input}
-                        placeholder="Masukan nama lengkap"
-                        placeholderTextColor="#9CA3AF"
-                        value={nama}
-                        onChangeText={setNama}
-                    />
-                </View>
-
-                <Text style={styles.label}>EMAIL</Text>
-                <View style={styles.inputContainer}>
-                    <Feather name="mail" size={20} color="#9CA3AF" style={styles.inputIcon} />
-                    <TextInput
-                        style={styles.input}
-                        placeholder="Masukan email"
-                        placeholderTextColor="#9CA3AF"
-                        value={email}
-                        onChangeText={setEmail}
-                        keyboardType="email-address"
-                        autoCapitalize="none"
-                    />
-                </View>
-
-                <Text style={styles.label}>PASSWORD</Text>
-                <View style={styles.inputContainer}>
-                    <Feather name="lock" size={20} color="#9CA3AF" style={styles.inputIcon} />
-                    <TextInput
-                        style={styles.input}
-                        placeholder="Masukan password"
-                        placeholderTextColor="#9CA3AF"
-                        value={password}
-                        onChangeText={setPassword}
-                        secureTextEntry={!showPassword}
-                    />
-                    <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
-                        <Feather name={showPassword ? "eye" : "eye-off"} size={20} color="#9CA3AF" style={styles.eyeIcon} />
+        <KeyboardAvoidingView
+            style={{ flex: 1 }}
+            behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        >
+            <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+                <View style={styles.header}>
+                    <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
+                        <Feather name="arrow-left" size={24} color="#2563EB" />
                     </TouchableOpacity>
+                    <Text style={styles.headerTitle}>Buat Akun Baru</Text>
+                    <View style={{ width: 24 }} />
                 </View>
 
-                <Text style={styles.label}>KONFIRMASI PASSWORD</Text>
-                <View style={styles.inputContainer}>
-                    <Feather name="lock" size={20} color="#9CA3AF" style={styles.inputIcon} />
-                    <TextInput
-                        style={styles.input}
-                        placeholder="Konfirmasi password"
-                        placeholderTextColor="#9CA3AF"
-                        value={konfirmasiPassword}
-                        onChangeText={setKonfirmasiPassword}
-                        secureTextEntry={!showConfirmPassword}
-                    />
-                    <TouchableOpacity onPress={() => setShowConfirmPassword(!showConfirmPassword)}>
-                        <Feather name={showConfirmPassword ? "eye" : "eye-off"} size={20} color="#9CA3AF" style={styles.eyeIcon} />
+                <View style={styles.formContainer}>
+                    <Text style={styles.label}>USERNAME</Text>
+                    <View style={styles.inputContainer}>
+                        <Feather name="user" size={20} color="#9CA3AF" style={styles.inputIcon} />
+                        <TextInput
+                            style={styles.input}
+                            placeholder="Masukan username"
+                            placeholderTextColor="#9CA3AF"
+                            value={username}
+                            onChangeText={setUsername}
+                            autoCapitalize="none"
+                        />
+                    </View>
+
+                    <Text style={styles.label}>NAMA LENGKAP</Text>
+                    <View style={styles.inputContainer}>
+                        <Feather name="target" size={20} color="#9CA3AF" style={styles.inputIcon} />
+                        <TextInput
+                            style={styles.input}
+                            placeholder="Masukan nama lengkap"
+                            placeholderTextColor="#9CA3AF"
+                            value={nama}
+                            onChangeText={setNama}
+                        />
+                    </View>
+
+                    <Text style={styles.label}>EMAIL</Text>
+                    <View style={styles.inputContainer}>
+                        <Feather name="mail" size={20} color="#9CA3AF" style={styles.inputIcon} />
+                        <TextInput
+                            style={styles.input}
+                            placeholder="Masukan email"
+                            placeholderTextColor="#9CA3AF"
+                            value={email}
+                            onChangeText={setEmail}
+                            keyboardType="email-address"
+                            autoCapitalize="none"
+                        />
+                    </View>
+
+                    <Text style={styles.label}>PASSWORD</Text>
+                    <View style={styles.inputContainer}>
+                        <Feather name="lock" size={20} color="#9CA3AF" style={styles.inputIcon} />
+                        <TextInput
+                            style={styles.input}
+                            placeholder="Masukan password"
+                            placeholderTextColor="#9CA3AF"
+                            value={password}
+                            onChangeText={setPassword}
+                            secureTextEntry={!showPassword}
+                        />
+                        <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
+                            <Feather name={showPassword ? "eye" : "eye-off"} size={20} color="#9CA3AF" style={styles.eyeIcon} />
+                        </TouchableOpacity>
+                    </View>
+
+                    <Text style={styles.label}>KONFIRMASI PASSWORD</Text>
+                    <View style={styles.inputContainer}>
+                        <Feather name="lock" size={20} color="#9CA3AF" style={styles.inputIcon} />
+                        <TextInput
+                            style={styles.input}
+                            placeholder="Konfirmasi password"
+                            placeholderTextColor="#9CA3AF"
+                            value={konfirmasiPassword}
+                            onChangeText={setKonfirmasiPassword}
+                            secureTextEntry={!showConfirmPassword}
+                        />
+                        <TouchableOpacity onPress={() => setShowConfirmPassword(!showConfirmPassword)}>
+                            <Feather name={showConfirmPassword ? "eye" : "eye-off"} size={20} color="#9CA3AF" style={styles.eyeIcon} />
+                        </TouchableOpacity>
+                    </View>
+
+                    {error ? <Text style={styles.errorText}>{error}</Text> : null}
+
+                    <TouchableOpacity
+                        style={[styles.button, loading && styles.buttonDisabled]}
+                        onPress={onSubmit}
+                        disabled={loading}
+                    >
+                        <Text style={styles.buttonText}>
+                            {loading ? 'Loading...' : 'Daftar Sekarang'}
+                        </Text>
                     </TouchableOpacity>
+
+                    <View style={styles.footer}>
+                        <Text style={styles.footerText}>Sudah punya akun? </Text>
+                        <TouchableOpacity onPress={() => router.back()}>
+                            <Text style={styles.loginText}>Login Disini</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
-
-                {error ? <Text style={styles.errorText}>{error}</Text> : null}
-
-                <TouchableOpacity
-                    style={[styles.button, loading && styles.buttonDisabled]}
-                    onPress={onSubmit}
-                    disabled={loading}
-                >
-                    <Text style={styles.buttonText}>
-                        {loading ? 'Loading...' : 'Daftar Sekarang'}
-                    </Text>
-                </TouchableOpacity>
-
-                <View style={styles.footer}>
-                    <Text style={styles.footerText}>Sudah punya akun? </Text>
-                    <TouchableOpacity onPress={() => router.back()}>
-                        <Text style={styles.loginText}>Login Disini</Text>
-                    </TouchableOpacity>
-                </View>
-            </View>
-        </ScrollView>
+            </ScrollView>
+        </KeyboardAvoidingView>
     );
 }
 

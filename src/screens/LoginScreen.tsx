@@ -1,7 +1,7 @@
 import { Feather } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
-import { Alert, Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Alert, Image, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import useAuth from '../hooks/useAuth';
 
 export default function LoginScreen() {
@@ -29,72 +29,79 @@ export default function LoginScreen() {
     };
 
     return (
-        <View style={styles.container}>
-            <View style={styles.card}>
-                <Image
-                    source={require('../../assets/images/react-logo.png')}
-                    style={{ width: 100, height: 100, alignSelf: 'center' }}
-                />
-                <Text style={styles.title}>Inventory APP</Text>
-                <Text style={styles.subtitle}>Aplikasi manajemen kelola data barang</Text>
-
-                <Text style={styles.welcome}>Selamat Datang</Text>
-                <Text style={styles.desc}>Silahkan login menggunakan akun anda</Text>
-
-                <View style={styles.formContainer}>
-                    <Text style={styles.label}>USERNAME</Text>
-                    <View style={styles.inputContainer}>
-                        <Feather name="user" size={20} color="#9CA3AF" style={styles.inputIcon} />
-                        <TextInput
-                            style={styles.input}
-                            placeholder="Masukan username"
-                            placeholderTextColor="#9CA3AF"
-                            value={username}
-                            onChangeText={setUsername}
-                            autoCapitalize="none"
+        <KeyboardAvoidingView
+            style={{ flex: 1 }}
+            behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        >
+            <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+                <View style={styles.container}>
+                    <View style={styles.card}>
+                        <Image
+                            source={require('../../assets/images/react-logo.png')}
+                            style={{ width: 100, height: 100, alignSelf: 'center' }}
                         />
-                    </View>
+                        <Text style={styles.title}>Inventory App</Text>
+                        <Text style={styles.subtitle}>Aplikasi manajemen kelola data barang</Text>
 
-                    <Text style={styles.label}>PASSWORD</Text>
-                    <View style={styles.inputContainer}>
-                        <Feather name="lock" size={20} color="#9CA3AF" style={styles.inputIcon} />
-                        <TextInput
-                            style={styles.input}
-                            placeholder="Masukan password"
-                            placeholderTextColor="#9CA3AF"
-                            value={password}
-                            onChangeText={setPassword}
-                            secureTextEntry={!showPassword}
-                        />
-                        <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
-                            <Feather name={showPassword ? "eye" : "eye-off"} size={20} color="#9CA3AF" style={styles.eyeIcon} />
+                        <Text style={styles.welcome}>Selamat Datang</Text>
+                        <Text style={styles.desc}>Silahkan login menggunakan akun anda</Text>
+
+                        <View style={styles.formContainer}>
+                            <Text style={styles.label}>USERNAME</Text>
+                            <View style={styles.inputContainer}>
+                                <Feather name="user" size={20} color="#9CA3AF" style={styles.inputIcon} />
+                                <TextInput
+                                    style={styles.input}
+                                    placeholder="Masukan username"
+                                    placeholderTextColor="#9CA3AF"
+                                    value={username}
+                                    onChangeText={setUsername}
+                                    autoCapitalize="none"
+                                />
+                            </View>
+
+                            <Text style={styles.label}>PASSWORD</Text>
+                            <View style={styles.inputContainer}>
+                                <Feather name="lock" size={20} color="#9CA3AF" style={styles.inputIcon} />
+                                <TextInput
+                                    style={styles.input}
+                                    placeholder="Masukan password"
+                                    placeholderTextColor="#9CA3AF"
+                                    value={password}
+                                    onChangeText={setPassword}
+                                    secureTextEntry={!showPassword}
+                                />
+                                <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
+                                    <Feather name={showPassword ? "eye" : "eye-off"} size={20} color="#9CA3AF" style={styles.eyeIcon} />
+                                </TouchableOpacity>
+                            </View>
+
+                        </View>
+
+                        {/* Error */}
+                        {error ? <Text style={styles.error}>{error}</Text> : null}
+
+                        {/* Button */}
+                        <TouchableOpacity
+                            style={styles.button}
+                            onPress={onSubmit}
+                            disabled={loading}
+                        >
+                            <Text style={styles.buttonText}>
+                                {loading ? 'Loading...' : 'Login'}
+                            </Text>
                         </TouchableOpacity>
+
+                        <View style={styles.footerContainer}>
+                            <Text style={styles.footer}>Belum punya akun? </Text>
+                            <TouchableOpacity onPress={() => router.push('/register')}>
+                                <Text style={[styles.footer, { color: '#2563EB', fontWeight: 'bold' }]}>Daftar Sekarang</Text>
+                            </TouchableOpacity>
+                        </View>
                     </View>
-
                 </View>
-
-                {/* Error */}
-                {error ? <Text style={styles.error}>{error}</Text> : null}
-
-                {/* Button */}
-                <TouchableOpacity
-                    style={styles.button}
-                    onPress={onSubmit}
-                    disabled={loading}
-                >
-                    <Text style={styles.buttonText}>
-                        {loading ? 'Loading...' : 'Login'}
-                    </Text>
-                </TouchableOpacity>
-
-                <View style={styles.footerContainer}>
-                    <Text style={styles.footer}>Belum punya akun? </Text>
-                    <TouchableOpacity onPress={() => router.push('/register')}>
-                        <Text style={[styles.footer, { color: '#2563EB', fontWeight: 'bold' }]}>Daftar Sekarang</Text>
-                    </TouchableOpacity>
-                </View>
-            </View>
-        </View>
+            </ScrollView>
+        </KeyboardAvoidingView>
     );
 }
 
@@ -118,7 +125,7 @@ const styles = StyleSheet.create({
     subtitle: {
         textAlign: 'center',
         color: '#6B7280',
-        marginBottom: 20,
+        marginBottom: 50,
     },
     welcome: {
         fontSize: 18,
