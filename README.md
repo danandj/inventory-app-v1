@@ -1,50 +1,40 @@
-# Welcome to your Expo app 👋
+# Inventory App v1 📦
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## Deskripsi Project
+Aplikasi mobile untuk sistem manajemen inventaris barang. Dibangun menggunakan React Native dan Expo, aplikasi ini memungkinkan pengguna untuk melakukan autentikasi (login/register) dan mengelola data barang (CRUD) secara efisien dengan antarmuka yang sederhana.
 
-## Get started
+## Tech Stack
+- **Framework:** React Native & Expo
+- **Language:** TypeScript
 
-1. Install dependencies
+## Penjelasan `package.json` / Dependencies
+Berikut adalah beberapa dependencies utama yang digunakan dalam project ini:
+- `expo` & `react-native`: Core framework untuk membangun aplikasi mobile cross-platform.
+- `expo-router`: Sistem routing modern berbasis file, memudahkan navigasi antar halaman layaknya Next.js di ekosistem web.
+- `@expo/vector-icons`: Kumpulan ikon siap pakai (seperti Feather) untuk elemen UI.
+- `@react-navigation/*`: Digunakan di balik layar oleh Expo Router untuk mengelola stack layar dan navigasi.
+- `typescript` & `@types/react`: Memberikan dukungan pengetikan statis (type-safe) untuk pengembangan yang lebih baik dan meminimalisir bug.
 
+## Instalasi / Setup Project
+
+1. **Buka terminal** dan pastikan Anda berada di direktori project utama.
+2. **Install dependencies** menggunakan npm:
    ```bash
    npm install
    ```
 
-2. Start the app
+## Cara Menjalankan Project
 
-   ```bash
-   npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
+Untuk menjalankan aplikasi di server development lokal, gunakan perintah berikut:
 ```bash
-npm run reset-project
+npm start
+```
+atau
+```bash
+npx expo start
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Dari terminal yang berjalan, Anda dapat berinteraksi dengan menekan:
+- `a` untuk membuka aplikasi di Android Emulator.
+- `i` untuk membuka aplikasi di iOS Simulator.
+- Scan QR code yang muncul menggunakan aplikasi **Expo Go** di perangkat fisik Android, atau menggunakan kamera di perangkat iOS.
