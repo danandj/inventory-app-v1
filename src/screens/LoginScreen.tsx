@@ -21,7 +21,7 @@ export default function LoginScreen() {
         const res = await handleLogin(username, password);
         if (res.success) {
             Alert.alert('Sukses', res.message || 'Login berhasil', [
-                { text: 'OK', onPress: () => router.push('/') }
+                { text: 'OK', onPress: () => router.push('/daftarbarang') }
             ]);
         } else {
             Alert.alert('Gagal', res.message || 'Terjadi kesalahan saat login');

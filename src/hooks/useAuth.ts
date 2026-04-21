@@ -12,9 +12,7 @@ export default function useAuth() {
         try {
             setLoading(true);
             setError(null);
-
             const res = await login(username, password);
-
             setUser(res.data.user);
             setToken(res.data.token);
             return { success: true, message: res.message };
@@ -30,9 +28,7 @@ export default function useAuth() {
         try {
             setLoading(true);
             setError(null);
-
             const res = await register(username, email, nama, password);
-
             setUser({
                 id: res.data.id,
                 username: res.data.username,

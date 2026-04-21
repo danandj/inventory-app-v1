@@ -1,6 +1,5 @@
+import { BASE_URL } from '../constants/api';
 import { LoginErrorResponse, LoginSuccessResponse, RegisterErrorResponse, RegisterSuccessResponse } from '../types/auth';
-
-const BASE_URL = 'http://172.20.10.3:3000'; //Alamat IP Backend/Api nya
 
 export const login = async (
     username: string,
@@ -13,13 +12,10 @@ export const login = async (
         },
         body: JSON.stringify({ username, password }),
     });
-
     const data = await response.json();
-
     if (!response.ok) {
         throw data as LoginErrorResponse;
     }
-
     return data as LoginSuccessResponse;
 };
 
@@ -36,12 +32,9 @@ export const register = async (
         },
         body: JSON.stringify({ username, email, nama, password }),
     });
-
     const data = await response.json();
-
     if (!response.ok) {
         throw data as RegisterErrorResponse;
     }
-
     return data as RegisterSuccessResponse;
 };
