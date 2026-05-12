@@ -1,1 +1,1 @@
-export const BASE_URL = 'http://192.168.18.129:3000'; //Alamat IP Backend/Api nya
+export const BASE_URL = 'http://192.168.1.9:3000'; //Alamat IP Backend/Api nya
