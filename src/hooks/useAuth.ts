@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { login, register } from '../services/authService';
 import { User } from '../types/auth';
+import { saveSession } from '../utils/session';
 
 export default function useAuth() {
     const [loading, setLoading] = useState(false);
@@ -15,6 +16,12 @@ export default function useAuth() {
             const res = await login(username, password);
             setUser(res.data.user);
             setToken(res.data.token);
+            if (res.data.user && res.data.token) {
+                await saveSession(
+                    res.data.token,
+                    res.data.user
+                );
+            }
             return { success: true, message: res.message };
         } catch (err: any) {
             setError(err.message || 'Terjadi kesalahan');

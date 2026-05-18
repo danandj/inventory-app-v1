@@ -14,6 +14,7 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import useDashboard from '../hooks/useDashboard';
 import DaftarBarangScreen from './DaftarBarangScreen';
+import ProfileScreen from './ProfileScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -249,7 +250,7 @@ export default function DashboardScreen() {
         >
             <Tab.Screen name="Dashboard" component={DashboardContent} />
             <Tab.Screen name="Barang" component={DaftarBarangScreen} />
-            <Tab.Screen name="Profil" component={() => null} />
+            <Tab.Screen name="Profil" component={ProfileScreen} />
         </Tab.Navigator>
     );
 }

@@ -121,7 +121,9 @@ export default function DaftarBarangScreen() {
     return (
         <SafeAreaView style={styles.container} edges={['top', 'bottom']}>
             <View style={styles.header}>
-                <Feather name="menu" size={24} color="#111" />
+                <TouchableOpacity onPress={() => router.back()}>
+                    <Feather name="arrow-left" size={24} color="#111827" />
+                </TouchableOpacity>
                 <Text style={styles.headerTitle}>Daftar Barang</Text>
                 <TouchableOpacity style={styles.refreshButton} onPress={handleRefresh}>
                     <Feather name="refresh-cw" size={24} color="#fff" />
